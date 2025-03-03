@@ -1,0 +1,124 @@
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+
+       local Window = MakeWindow({
+         Hub = {
+         Title = "Nhân Dz Hub",
+         Animation = "by nhân dz"
+         },
+        Key = {
+        KeySystem = true,
+        Title = "Get Key",
+        Description = "Nhân Dz Hub Auto Hop",
+        KeyLink = "https://link4m.com/KJxcxxbr",
+        Keys = {"FREE_af3aeadb5b5c7425eb3b2192ddce35db"},
+        Notifi = {
+        Notifications = true,
+        CorrectKey = "Đang chạy script...",
+       Incorrectkey = "Key sai",
+       CopyKeyLink = "Đã sao chép"
+      }
+    }
+  })
+
+       MinimizeButton({
+       Image = "http://www.roblox.com/asset/?id=121798282953737",
+       Size = {50, 50},
+       Color = Color3.fromRGB(10, 10, 10),
+       Corner = true,
+       Stroke = false,
+       StrokeColor = Color3.fromRGB(255, 0, 0)
+      })
+      
+------ Tab
+     local Tab1o = MakeTab({Name = "Trang chủ"})
+     local Tab2o = MakeTab({Name = "Auto Kill'})
+     
+-------TOGGLE 
+
+     Toggle = AddToggle(Tab1o, {
+      Name = "Nhân Dz Hub",
+      Default = true,
+      Callback = function()
+     end
+    })
+    
+------- BUTTON
+    
+    AddButton(Tab1o, {
+     Name = "Auto Hop Rip_indra",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnBeoDepTrai/refs/heads/main/Rip_Indra"))()
+end
+})
+   AddButton(Tab1o, {
+     Name = "Auto Hop Dough King ",
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnBeoDepTrai/refs/heads/main/Dough_King"))()
+end
+})
+AddButton(Tab1o, {
+     Name = "Auto Hop Mirage island (Sớm cập nhật)",
+    Callback = function()
+end
+})
+AddButton(Tab1o, {
+     Name = "Auto Hop Black beard boss (Sớm cập nhật)",
+    Callback = function()
+end
+})
+local Boss= v16.2o:AddSection("Trùm");
+elseif Sea3 then
+    tableBoss = {
+        "Dough King V2",
+        "rip_indra True Form",
+    };
+end
+AddButton(Tab2o, {
+     Title = "Chọn Trùm",
+    Description = "",
+    Values = tableBoss,
+    Multi = false,
+    Default = 1
+});
+v61:SetValue(_G.SelectBoss);
+v61:OnChanged(function(v253)
+    _G.SelectBoss = v253;
+end);
+ AddButton(Tab2o, {
+      Title = "Đấm Trùm",
+    Description = "",
+    Default = false
+});
+v62:OnChanged(function(v254)
+    _G.AutoBoss = v254;
+end);
+v17.ToggleAutoFarmBoss:SetValue(false);
+spawn(function()
+    while wait() do
+        if _G.AutoBoss then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+                    for v1034, v1035 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if (v1035.Name == _G.SelectBoss) then
+                            if (v1035:FindFirstChild("Humanoid") and v1035:FindFirstChild("HumanoidRootPart") and (v1035.Humanoid.Health > 0)) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    AutoHaki();
+                                    EquipTool(SelectWeapon);
+                                    v1035.HumanoidRootPart.CanCollide = false;
+                                    v1035.Humanoid.WalkSpeed = 0;
+                                    v1035.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    Tween(v1035.HumanoidRootPart.CFrame * Pos);
+                                    sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge);
+                                until not _G.AutoBoss or not v1035.Parent or (v1035.Humanoid.Health <= 0)
+                            end
+                        end
+                    end
+                elseif game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
+                    Tween(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(5, 10, 7));
+                end
+            end);
+        end
+    end
+end);
